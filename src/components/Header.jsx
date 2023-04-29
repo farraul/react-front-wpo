@@ -16,7 +16,7 @@ import {
   setCredentials,
 } from '@/app/features/user/userSlices';
 import { useGetDetailsQuery } from '@/services/userServices';
-import {Spinner} from '@/components'
+import { Spinner } from '@/components'
 
 function Header() {
   const { userInfo } = useSelector((state) => state.user);
@@ -46,7 +46,7 @@ function Header() {
   useEffect(() => {
     if (isError) {
       handleLogout()
-      navigate("/login")      
+      navigate("/login")
       console.log(error)
     }
   }, [isError])
@@ -103,6 +103,9 @@ function Header() {
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={() => navigate('/dashboard')}>
                     Dashboard
+                  </MenuItem>
+                  <MenuItem onClick={() => navigate('/homewpo')}>
+                    Wpo
                   </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>

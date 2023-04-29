@@ -9,6 +9,7 @@ import {
   RegisterPage,
   DashboardPage,
 } from '@/pages';
+import { HomeWpo } from '../pages';
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,15 @@ export const router = createBrowserRouter([
               <ProtectedRoutes>
                 <DashboardPage />
               </ProtectedRoutes>
+            ),
+          },
+          {
+            path: '/homewpo',
+            element: (
+              <ProtectedRoutes>
+                <HomeWpo />
+              </ProtectedRoutes>
+
             ),
           },
         ],

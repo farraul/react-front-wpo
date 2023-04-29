@@ -7,7 +7,7 @@ import {
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_FIRST_ENDPOINT,
+    baseUrl: "http://localhost:5000",
     // eslint-disable-next-line consistent-return
     prepareHeaders: (headers, { getState }) => {
       const token = getState().user.userToken;
