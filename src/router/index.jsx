@@ -10,6 +10,7 @@ import {
   DashboardPage,
 } from '@/pages';
 import { HomeWpo } from '../pages';
+import Seo from '../pages/Seo';
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +47,14 @@ export const router = createBrowserRouter([
               <ProtectedRoutes>
                 <HomeWpo />
               </ProtectedRoutes>
-
+            ),
+          },
+          {
+            path: '/seo',
+            element: (
+              <ProtectedRoutes>
+                <Seo />
+              </ProtectedRoutes>
             ),
           },
         ],

@@ -107,6 +107,9 @@ function Header() {
                   <MenuItem onClick={() => navigate('/homewpo')}>
                     Wpo
                   </MenuItem>
+                  <MenuItem onClick={() => navigate('/seo')}>
+                    Seo
+                  </MenuItem>
                   <MenuItem onClick={handleLogout}>Logout</MenuItem>
                 </Menu>
               </div>
