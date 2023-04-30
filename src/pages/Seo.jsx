@@ -14,8 +14,6 @@ import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
 
 
-
-
 const Seo = () => {
 
     const [url, setUrl] = useState("");
@@ -56,27 +54,14 @@ const Seo = () => {
                     for (let i = 0; i <= 6; i++) {
                         if (response.data[`h${i}`] != undefined) {
                             if (response.data[`h${i}`].length = 1) {
-                                // a = { [`h${i}`]: `${response.data[`h${i}`]}` };
-
-
                                 a.push({ [`h${i}`]: `${response.data[`h${i}`]}` });
 
-
                             }
-
-
-
-
                         }
                     }
-                    //   console.log({a})
+
                     setHeadings(a);
 
-                    // console.log({ headings })
-                    // console.log(headings.length)
-
-
-                    setData(response.data)
                 } catch (error) {
                     console.error(error);
                 }
@@ -87,13 +72,10 @@ const Seo = () => {
     };
 
 
-
-
     return (
         <section className="p-16">
             <h2>Seo</h2>
             <p>Bienvenido a Seo</p>
-
 
             <Box
                 component="form"
@@ -124,15 +106,14 @@ const Seo = () => {
                 </Button>
             </Box>
 
-
-
-            {/* {console.log(headings?.length)} */}
             {console.log(headings)}
 
-            {headings?.length > 0 ?
+            {headings?.length > 0 &&
                 <>
                     {console.log({ headings })}
-                    <h2 className="text-2xl font-bold  mt-10 mb-5">h2</h2>
+                    <h2 className="text-2xl font-bold  mt-10 mb-5">Headings</h2>
+
+
                     < List
                         sx={{
                             width: '100%',
@@ -145,37 +126,23 @@ const Seo = () => {
                         }}
                         subheader={<li />}
                     >
-                        {["h1", "h2", "h3", "h4", "h5"].map((titleHeading) => (
-                            <li key={`section-${titleHeading}`}>
-                                <ul>
-                                    {console.log({ headings })}
-
-                                    {headings.map(item => {
-                                        { console.log({item}) }
-
-                                        { console.log(item.h1) }
-                                        { console.log("s", item.titleHeading) }
-
-
-                                        item?.titleHeading&&
-                                            <ListItem key={`item-${titleHeading}-${item}`}>
-                                                <ListItemText primary={`Items ${item.titleHeading}`} />
-                                            </ListItem>
-
-                                    })}
-
-
-                                </ul>
-                            </li>
+                        {headings.map((heading) => (
+                            <>
+                                <li key={`section-${Object.keys(heading)[0]}`}>
+                                    <ul>
+                                        <ListSubheader sx={{ bgcolor: 'blue', color: "white" }}>{Object.keys(heading)[0]}</ListSubheader>
+                                        <ListItem key={`item-${heading}-list`}>
+                                            <ListItemText primary={Object.values(heading)[0]} />
+                                        </ListItem>
+                                    </ul>
+                                </li>
+                            </>
                         ))}
-                    </List>
 
+                    </List>
                 </>
 
-                : null}
-
-
-
+            }
 
         </section >
     );
