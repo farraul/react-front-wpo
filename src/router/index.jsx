@@ -11,6 +11,7 @@ import {
 } from '@/pages';
 import { HomeWpo } from '../pages';
 import Seo from '../pages/Seo';
+import SeoAnalizer from '../pages/seoAnalizer';
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,14 @@ export const router = createBrowserRouter([
             element: (
               <ProtectedRoutes>
                 <Seo />
+              </ProtectedRoutes>
+            ),
+          },
+          {
+            path: '/seo-analizer',
+            element: (
+              <ProtectedRoutes>
+                <SeoAnalizer />
               </ProtectedRoutes>
             ),
           },

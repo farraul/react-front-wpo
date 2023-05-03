@@ -12,14 +12,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
+// import scraper from 'seo-scraper';
 
 
-const Seo = () => {
+const SeoAnalizer = () => {
 
     const [url, setUrl] = useState("");
     const [data, setData] = useState(null);
     const [headings, setHeadings] = useState(undefined);
-
 
     const handleChange = (e) => {
         setUrl(e.target.value);
@@ -30,35 +30,24 @@ const Seo = () => {
         e.preventDefault();
         var regex = /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
 
-
         (async () => {
             if (regex.test(url)) {
-                const encodedParams = new URLSearchParams();
-                encodedParams.set('url', url);
 
-                const options = {
-                    method: 'POST',
-                    url: 'https://canssens-seo-extraction-v1.p.rapidapi.com/seo/api/',
-                    headers: {
-                        'content-type': 'application/x-www-form-urlencoded',
-                        'X-RapidAPI-Key': '7a852f3f31msh2d432bde9686feep1e9e9cjsn71666313ac78',
-                        'X-RapidAPI-Host': 'canssens-seo-extraction-v1.p.rapidapi.com'
-                    },
-                    data: encodedParams,
-                };
+              
 
                 try {
-                    const response = await axios.request(options);
-                    console.log(response);
-                    let a = [];
-                    for (let i = 0; i <= 6; i++) {
-                        if (response.data[`h${i}`] != undefined) {
-                            if (response.data[`h${i}`].length = 1) {
-                                a.push({ [`h${i}`]: `${response.data[`h${i}`]}` });
+                    // scraper.scrape({ url: 'https://github.com/NachoSEO/seo-scraper' })
+                    // .then(elements => console.log(elements))
 
-                            }
-                        }
-                    }
+                    let a = [];
+                    // for (let i = 0; i <= 6; i++) {
+                    //     if (response.data[`h${i}`] != undefined) {
+                    //         if (response.data[`h${i}`].length = 1) {
+                    //             a.push({ [`h${i}`]: `${response.data[`h${i}`]}` });
+
+                    //         }
+                    //     }
+                    // }
 
                     setHeadings(a);
 
@@ -75,8 +64,8 @@ const Seo = () => {
     return (
         <section className="p-16">
             <div className='w-1/3'>
-                <h2>Seo</h2>
-                <p>Bienvenido a Seo</p>
+                <h2>Seo Analizer</h2>
+                <p>Escribe una url</p>
 
                 <Box
                     component="form"
@@ -109,7 +98,7 @@ const Seo = () => {
             </div>
 
             {console.log(headings)}
-
+{/* 
             {headings?.length > 0 &&
                 <>
                     {console.log({ headings })}
@@ -144,10 +133,10 @@ const Seo = () => {
                     </List>
                 </>
 
-            }
+            } */}
 
         </section >
     );
 };
 
-export default Seo;
+export default SeoAnalizer;
