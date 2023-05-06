@@ -13,6 +13,15 @@ import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
 // import scraper from 'seo-scraper';
+import SerpApi from 'google-search-results-nodejs'
+import { CallToAction } from '@mui/icons-material';
+
+import {
+    useQuery,
+    useMutation,
+    useQueryClient,
+} from '@tanstack/react-query'
+
 
 
 const SeoAnalizer = () => {
@@ -20,6 +29,51 @@ const SeoAnalizer = () => {
     const [url, setUrl] = useState("");
     const [data, setData] = useState(null);
     const [headings, setHeadings] = useState(undefined);
+    const [ricky, setRicky] = useState([]);
+
+
+    // const  getRicky =  async () => {
+    //    await axios.get('https://rickandmortyapi.com/api/character/135')
+    //         .then(function (response) {
+    //             console.log(response);
+    //             const { data } = response;
+    //             return data;
+    //         })
+    // }
+
+    const getRicky = async () => {
+
+        return fetch('https://rickandmortyapi.com/api/character').then(res => res.json())
+        // try {
+        //     const res = await fetch('https://rickandmortyapi.com/api/character/135')
+        //     console.log(res.json())
+        // } catch (error) {
+        //     console.log({error})
+        // }
+    }
+
+
+
+    const { data: rickystate, isLoading, isError, error, status } = useQuery({
+        queryKey: ['apiMorty'],
+        queryFn: getRicky,
+        //refetchOnWindowFocus: true,
+        cacheTime: 10000, //tiempo almacenamiento en cache
+        staleTime: 10000, //determina cuando tienen que actualizarse
+
+    })
+
+    console.log({isLoading})
+    console.log({status})
+
+    useEffect(() => {
+        if (rickystate) {
+            setRicky(rickystate.results)
+            console.log(ricky)
+        }
+    }, [rickystate])
+
+
 
     const handleChange = (e) => {
         setUrl(e.target.value);
@@ -33,11 +87,14 @@ const SeoAnalizer = () => {
         (async () => {
             if (regex.test(url)) {
 
-              
+
 
                 try {
-                    // scraper.scrape({ url: 'https://github.com/NachoSEO/seo-scraper' })
-                    // .then(elements => console.log(elements))
+
+
+                    console.log({ result })
+
+
 
                     let a = [];
                     // for (let i = 0; i <= 6; i++) {
@@ -64,6 +121,12 @@ const SeoAnalizer = () => {
     return (
         <section className="p-16">
             <div className='w-1/3'>
+
+                { !isLoading && ricky.map(el => (
+                    <h1>{el.name}</h1>
+                ))}
+
+
                 <h2>Seo Analizer</h2>
                 <p>Escribe una url</p>
 
@@ -98,7 +161,8 @@ const SeoAnalizer = () => {
             </div>
 
             {console.log(headings)}
-{/* 
+
+            {/* 
             {headings?.length > 0 &&
                 <>
                     {console.log({ headings })}

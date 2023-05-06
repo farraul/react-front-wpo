@@ -1,11 +1,12 @@
 import React from 'react';
 import { SnackbarProvider } from 'notistack';
-import { Outlet } from 'react-router-dom';
-import { CacheProvider } from '@emotion/react';
+import { Outlet } from 'react-router-dom'; //para mostrar children
+import { CacheProvider } from '@emotion/react'; // es para no colisionar material ui y tailwind
 import createCache from '@emotion/cache';
 import { SnackbarUtilitiesConfigurator } from '../utilities';
 import Header from './Header';
 
+//outlet los children
 const myCache = createCache({
   key: 'my-prefix-key',
   stylisPlugins: [],
@@ -14,7 +15,7 @@ const myCache = createCache({
 
 function Layout() {
   return (
-    <CacheProvider value={myCache}>
+    <CacheProvider value={myCache}> 
       <SnackbarProvider
         maxSnack={3}
         anchorOrigin={{
@@ -25,7 +26,7 @@ function Layout() {
         <SnackbarUtilitiesConfigurator />
         <Header />
         <main>
-          <Outlet />
+          <Outlet /> 
         </main>
       </SnackbarProvider>
     </CacheProvider>

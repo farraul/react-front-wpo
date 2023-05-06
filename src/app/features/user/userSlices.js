@@ -15,7 +15,7 @@ const initialState = {
   success: false,
 };
 
-const userSlice = createSlice({
+const userSlice = createSlice({ //redux: para estados 
   name: 'user',
   initialState,
   reducers: {

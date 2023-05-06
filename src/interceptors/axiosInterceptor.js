@@ -8,9 +8,11 @@ export const axiosInterceptor = () => {
       console.log('response', response);
       return response;
     },
+    
     (error) => {
       console.log(error);
-      SnackbarUtilities.error(getValidationError(error.code));
+      console.log(typeof error)
+      SnackbarUtilities.error(getValidationError(error.response?.data.message));
       return Promise.reject(error);
     },
   );
