@@ -23,7 +23,6 @@ import {
 } from '@tanstack/react-query'
 
 
-
 const SeoAnalizer = () => {
 
     const [url, setUrl] = useState("");
@@ -31,28 +30,9 @@ const SeoAnalizer = () => {
     const [headings, setHeadings] = useState(undefined);
     const [ricky, setRicky] = useState([]);
 
-
-    // const  getRicky =  async () => {
-    //    await axios.get('https://rickandmortyapi.com/api/character/135')
-    //         .then(function (response) {
-    //             console.log(response);
-    //             const { data } = response;
-    //             return data;
-    //         })
-    // }
-
     const getRicky = async () => {
-
         return fetch('https://rickandmortyapi.com/api/character').then(res => res.json())
-        // try {
-        //     const res = await fetch('https://rickandmortyapi.com/api/character/135')
-        //     console.log(res.json())
-        // } catch (error) {
-        //     console.log({error})
-        // }
     }
-
-
 
     const { data: rickystate, isLoading, isError, error, status } = useQuery({
         queryKey: ['apiMorty'],
@@ -63,8 +43,8 @@ const SeoAnalizer = () => {
 
     })
 
-    console.log({isLoading})
-    console.log({status})
+    console.log({ isLoading })
+    console.log({ status })
 
     useEffect(() => {
         if (rickystate) {
@@ -122,7 +102,7 @@ const SeoAnalizer = () => {
         <section className="p-16">
             <div className='w-1/3'>
 
-                { !isLoading && ricky.map(el => (
+                {!isLoading && ricky.map(el => (
                     <h1>{el.name}</h1>
                 ))}
 

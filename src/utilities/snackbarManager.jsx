@@ -17,4 +17,7 @@ export const SnackbarUtilities = {
   warning(msg) {
     this.toast(msg, 'warning');
   },
+  success(msg) {
+    this.toast(msg, 'success');
+  },
 };

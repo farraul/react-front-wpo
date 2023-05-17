@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userApi } from '../services';
-import userReducer from './features/user/userSlices';v //cambiamos nombre
+import userReducer from './features/user/userSlices'; //cambiamos nombre
 
 export const store = configureStore({
   reducer: {

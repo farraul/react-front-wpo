@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-const getValidationError = (errorCode) => {
+ const getValidationError = (errorCode) => {
   const codeMatcher = {
     'Invalid email or password': 'Email o contraseña incorrectas',
     ERR_BAD_REQUEST: 'Request failed with status code 401',
@@ -11,5 +11,10 @@ const getValidationError = (errorCode) => {
   };
   return codeMatcher[errorCode]
 };
+
+//  export const getValidationSucces = (errorCode) => {
+
+
+//   };
 
 export default getValidationError;

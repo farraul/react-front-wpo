@@ -1,6 +1,6 @@
 import axios from '@/api/axios';
 import { SnackbarUtilities } from '@/utilities';
-import getValidationError from '@/utilities/getValidation';
+import  getValidationError  from '@/utilities/getValidation';
 
 export const axiosInterceptor = () => {
   axios.interceptors.response.use(
@@ -8,7 +8,7 @@ export const axiosInterceptor = () => {
       console.log('response', response);
       return response;
     },
-    
+
     (error) => {
       console.log(error);
       console.log(typeof error)

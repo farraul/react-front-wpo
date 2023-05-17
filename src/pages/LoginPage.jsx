@@ -16,6 +16,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '@/app/features/user/userActions';
 import { showMsg, hiddenMsg } from '@/app/features/msg/msgSlice';
+import { SnackbarUtilities } from '../utilities/snackbarManager';
 
 const initialStateLogin = {
   email: '',
@@ -42,8 +43,9 @@ function LoginPage() {
     if (login) {
       dispatch(userLogin(login));
       dispatch(showMsg('You are logged in correctly'));
-      // clean states
+      SnackbarUtilities.success("Te has conectado correctamente");
 
+      // clean states
       setTimeout(() => {
         dispatch(hiddenMsg());
       }, 5000);
