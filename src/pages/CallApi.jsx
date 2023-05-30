@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { SnackbarUtilities } from '@/utilities';
 import {
     useQuery,
     useMutation,
@@ -7,7 +6,7 @@ import {
 } from '@tanstack/react-query'
 
 
-const SeoAnalizer = () => {
+const CallApi = () => {
 
     const [ricky, setRicky] = useState([]);
 
@@ -37,15 +36,16 @@ const SeoAnalizer = () => {
 
     return (
         <section className="p-16">
-            <div className='w-1/3'>
-
-                {!isLoading && ricky.map(el => (
-                    <h1>{el.name}</h1>
-                ))}
-
+            <div className='w-2/3'>
+                <h1 className="text-3xl">Página para ver funcionamiento de una llamada con:  useQuery de @tanstack/react-query </h1>
+                <div className='mt-10'>
+                    {!isLoading && ricky.map(el => (
+                        <p>{el.name}</p>
+                    ))}
+                </div>
             </div>
         </section >
     );
 };
 
-export default SeoAnalizer;
+export default CallApi;

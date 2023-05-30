@@ -8,10 +8,11 @@ import {
   LoginPage,
   RegisterPage,
   DashboardPage,
+  CallApi,
+  HomeWpo,
+  Seo,
 } from '@/pages';
-import { HomeWpo } from '../pages';
-import Seo from '../pages/Seo';
-import SeoAnalizer from '../pages/seoAnalizer';
+
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +63,7 @@ export const router = createBrowserRouter([
             path: '/seo-analizer',
             element: (
               <ProtectedRoutes>
-                <SeoAnalizer />
+                <CallApi/>
               </ProtectedRoutes>
             ),
           },
