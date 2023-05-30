@@ -19,11 +19,15 @@ const Seo = () => {
     const [url, setUrl] = useState("");
     const [data, setData] = useState(null);
     const [headings, setHeadings] = useState(undefined);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [countLinks, setCountLinks] = useState();
+
 
 
     const handleChange = (e) => {
         setUrl(e.target.value);
-        console.log({ url })
+        //  console.log({ url })
     };
 
     const handleSubmit = (e) => {
@@ -50,17 +54,21 @@ const Seo = () => {
                 try {
                     const response = await axios.request(options);
                     console.log(response);
-                    let a = [];
+
+                    let headings = [];
+
                     for (let i = 0; i <= 6; i++) {
                         if (response.data[`h${i}`] != undefined) {
                             if (response.data[`h${i}`].length = 1) {
-                                a.push({ [`h${i}`]: `${response.data[`h${i}`]}` });
-
+                                headings.push({ [`h${i}`]: `${response.data[`h${i}`]}` });
                             }
                         }
                     }
 
-                    setHeadings(a);
+                    setHeadings(headings);
+                    setTitle(response.data.title)
+                    setDescription(response.data.description)
+                    setCountLinks(response.data.links.length)
 
                 } catch (error) {
                     console.error(error);
@@ -107,45 +115,124 @@ const Seo = () => {
                     </Button>
                 </Box>
             </div>
+            <div className="flex">
+                {headings?.length > 0 &&
+                    <div className="mx-8">
+                        <>
+                            {console.log({ headings })}
+                            <h2 className="text-2xl font-bold  mt-10 mb-5">Headings</h2>
+                            < List
+                                sx={{
+                                    width: '100%',
+                                    maxWidth: 360,
+                                    position: 'relative',
+                                    overflow: 'auto',
+                                    maxHeight: 700,
+                                    '& ul': { padding: 0 },
+                                    bgcolor: '#cbdaf3',
+                                }}
+                                subheader={<li />}
+                            >
+                                {headings.map((heading) => (
+                                    <>
+                                        <li key={`section-${Object.keys(heading)[0]}`}>
+                                            <ul>
+                                                <ListSubheader sx={{ bgcolor: '#bfbff1' }}>{Object.keys(heading)[0]}</ListSubheader>
+                                                <ListItem key={`item-${Object.keys(heading)[0]}-list`}>
+                                                    <ListItemText primary={Object.values(heading)[0]} />
+                                                </ListItem>
+                                            </ul>
+                                        </li>
+                                    </>
+                                ))}
+                            </List>
+                        </>
+                    </div>
+                }
 
-            {console.log(headings)}
+                <div>
 
-            {headings?.length > 0 &&
-                <>
-                    {console.log({ headings })}
-                    <h2 className="text-2xl font-bold  mt-10 mb-5">Headings</h2>
-
-
-                    < List
-                        sx={{
-                            width: '100%',
-                            maxWidth: 360,
-                            position: 'relative',
-                            overflow: 'auto',
-                            maxHeight: 700,
-                            '& ul': { padding: 0 },
-                            bgcolor: '#cbdaf3',
-                        }}
-                        subheader={<li />}
-                    >
-                        {headings.map((heading) => (
+                {title?.length > 0 &&
+                        <div>
                             <>
-                                <li key={`section-${Object.keys(heading)[0]}`}>
-                                    <ul>
-                                        <ListSubheader sx={{ bgcolor: '#bfbff1' }}>{Object.keys(heading)[0]}</ListSubheader>
-                                        <ListItem key={`item-${Object.keys(heading)[0]}-list`}>
-                                            <ListItemText primary={Object.values(heading)[0]} />
-                                        </ListItem>
-                                    </ul>
-                                </li>
+                                {console.log({ title })}
+                                <h2 className="text-2xl font-bold  mt-10 mb-5">Title</h2>
+
+                                < List key={title}
+                                    sx={{
+                                        width: '100%',
+                                        maxWidth: 360,
+                                        position: 'relative',
+                                        overflow: 'auto',
+                                        maxHeight: 700,
+                                        '& ul': { padding: 0 },
+                                        bgcolor: '#cbdaf3',
+                                    }}
+                                    subheader={<li />}
+                                >
+                                    {title}
+                                </List>
                             </>
-                        ))}
+                        </div>
+                    } 
 
-                    </List>
-                </>
+                {description?.length > 0 &&
+                        <div>
+                            <>
+                                {console.log({ title })}
+                                <h2 className="text-2xl font-bold  mt-10 mb-5">Description</h2>
 
-            }
 
+                                < List
+                                    sx={{
+                                        width: '100%',
+                                        maxWidth: 360,
+                                        position: 'relative',
+                                        overflow: 'auto',
+                                        maxHeight: 700,
+                                        '& ul': { padding: 0 },
+                                        bgcolor: '#cbdaf3',
+                                    }}
+                                    subheader={<li />}
+                                >
+                                    {description}
+                                </List>
+                            </>
+                        </div>
+                    }
+
+                    {console.log("------->",{ countLinks })}
+                    {console.log("eewewewwe>",countLinks?.length  )}
+
+
+
+                    {countLinks?.length > 0 &&
+
+                        <div>
+                            <>
+                                {console.log({ countLinks })}
+                                <h2 className="text-2xl font-bold  mt-10 mb-5">Links totales</h2>
+                                < List
+                                    sx={{
+                                        width: '100%',
+                                        maxWidth: 360,
+                                        position: 'relative',
+                                        overflow: 'auto',
+                                        maxHeight: 700,
+                                        '& ul': { padding: 0 },
+                                        bgcolor: '#cbdaf3',
+                                    }}
+                                    subheader={<li />}
+                                >
+                                    {countLinks}
+                                </List>
+                            </>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
         </section >
     );
 };
