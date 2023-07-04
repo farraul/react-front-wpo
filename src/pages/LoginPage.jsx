@@ -41,9 +41,10 @@ function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (login) {
+      console.log({login})
       dispatch(userLogin(login));
-      dispatch(showMsg('You are logged in correctly'));
-      SnackbarUtilities.success("Te has conectado correctamente");
+    //  dispatch(showMsg('You are logged in correctly'));
+    //  SnackbarUtilities.success("Te has conectado correctamente");
 
       // clean states
       setTimeout(() => {

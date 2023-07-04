@@ -6,6 +6,7 @@ export const axiosInterceptor = () => {
   axios.interceptors.response.use(
     (response) => {
       console.log('response', response);
+      SnackbarUtilities.success("Te has conectado correctamente");
       return response;
     },
 

@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: '/seo-analizer',
+            path: '/call-api',
             element: (
               <ProtectedRoutes>
                 <CallApi/>
