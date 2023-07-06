@@ -22,6 +22,7 @@ function Header() {
   const { userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const { data, isFetching, isError, error } = useGetDetailsQuery('userDetails', {
     // Cada 15m automaticamente hara la peticion para ver si el usuario esta autenticado
     pollingInterval: 900000,

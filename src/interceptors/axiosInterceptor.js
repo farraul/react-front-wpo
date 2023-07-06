@@ -1,12 +1,12 @@
 import axios from '@/api/axios';
 import { SnackbarUtilities } from '@/utilities';
-import  getValidationError  from '@/utilities/getValidation';
+import { getValidationError, getValidationSucces } from '@/utilities/getValidation';
 
 export const axiosInterceptor = () => {
   axios.interceptors.response.use(
     (response) => {
       console.log('response', response);
-      SnackbarUtilities.success("Te has conectado correctamente");
+      SnackbarUtilities.success(getValidationSucces(response.status, response.config.url));
       return response;
     },
 

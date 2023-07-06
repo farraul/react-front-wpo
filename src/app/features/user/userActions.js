@@ -10,7 +10,7 @@ const config = {
 };
 
 export const userLogin = createAsyncThunk(
-  userServicesConfig.userLogin,
+  userServicesConfig.userLogin,  //es una referencia, es un nombre para la acción el nombre da igual, como si pongo patata
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
@@ -22,9 +22,7 @@ export const userLogin = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response) {
-        console.log("error26")
-
-        return rejectWithValue(error.message);
+        return rejectWithValue(error.message); //paramos la peticion para que redux lo sepa
       }
     }
   },

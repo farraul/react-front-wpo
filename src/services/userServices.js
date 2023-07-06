@@ -18,7 +18,7 @@ export const userApi = createApi({ //redux: para apis
     },
   }),
   endpoints: (build) => ({  //forma de hacer petición sin utilizar axios y fetch
-    getDetails: build.query({
+    getDetails: build.query({  //redux por defecto pone use...query
       query: () => ({
         url: 'api/user/profile',
         method: 'GET',

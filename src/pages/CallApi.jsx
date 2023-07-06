@@ -22,15 +22,10 @@ const CallApi = () => {
         staleTime: 10000, //determina cuando tienen que actualizarse
 
     })
-
-    console.log({ isLoading })
-    console.log({ status })
-
+    
     useEffect(() => {
         if (rickystate) {
-            console.log({ rickystate })
             setRicky(rickystate.results)
-            console.log({ ricky })
         }
     }, [rickystate])
 

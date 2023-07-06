@@ -38,13 +38,13 @@ function LoginPage() {
   const handleChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  // esto lo que hace es que no se recargue por tema de html, así lo paramos
+    
     if (login) {
-      console.log({login})
       dispatch(userLogin(login));
-    //  dispatch(showMsg('You are logged in correctly'));
-    //  SnackbarUtilities.success("Te has conectado correctamente");
+      dispatch(showMsg('You are logged in correctly'));//dont work
 
       // clean states
       setTimeout(() => {

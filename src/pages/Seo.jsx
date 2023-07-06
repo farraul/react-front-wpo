@@ -17,13 +17,10 @@ import ListSubheader from '@mui/material/ListSubheader';
 const Seo = () => {
 
     const [url, setUrl] = useState("");
-    const [data, setData] = useState(null);
     const [headings, setHeadings] = useState(undefined);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [countLinks, setCountLinks] = useState();
-
-
 
     const handleChange = (e) => {
         setUrl(e.target.value);
@@ -152,7 +149,7 @@ const Seo = () => {
 
                 <div>
 
-                {title?.length > 0 &&
+                    {title?.length > 0 &&
                         <div>
                             <>
                                 {console.log({ title })}
@@ -174,9 +171,9 @@ const Seo = () => {
                                 </List>
                             </>
                         </div>
-                    } 
+                    }
 
-                {description?.length > 0 &&
+                    {description?.length > 0 &&
                         <div>
                             <>
                                 {console.log({ title })}
@@ -201,8 +198,8 @@ const Seo = () => {
                         </div>
                     }
 
-                    {console.log("------->",{ countLinks })}
-                    {console.log("eewewewwe>",countLinks?.length  )}
+                    {console.log("------->", { countLinks })}
+                    {console.log("eewewewwe>", countLinks?.length)}
 
 
 
